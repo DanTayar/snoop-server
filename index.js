@@ -1,16 +1,19 @@
 const express = require('express');
 const app = express();
 const port = 4000;
+const cors = require('cors');
 
 
 app.use( express.static('build') );
 app.use( express.json() );
+app.use(cors());
 
 let submissions =[]
 
 app.post('/submit' , (req , res) =>{
+	console.log('called');
 	submissions.push(req.body);
-	res.status(201).send('submitted su ccesfuly');
+	res.status(201).send('submitted succesfuly');
 });
 
 app.get('/submissions', (req, res) =>{
